@@ -1,0 +1,4 @@
+#!/bin/sh
+\e[1;32mWelcome to Docker Dev Environment\n\e[0m
+* Workspace is located at /home/workenv, will keep after container destroyed.
+* Data is located at /data, will keep after container destroyed.
