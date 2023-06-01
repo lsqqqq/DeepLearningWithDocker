@@ -1,7 +1,10 @@
 #!/bin/bash
+source /root/miniconda3/bin/activate
+conda activate base
 
 # Install conda
-conda create -n -y python39 python=3.9
+conda info -e
+conda create -n python39 python=3.9 -y
 conda activate python39
 
 # Install pytorch-gpu

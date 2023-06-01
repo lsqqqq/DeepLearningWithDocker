@@ -15,13 +15,14 @@ RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 # Prepare for MiniConda
 && chmod 777 /root/scripts/miniconda-install.sh \
 && bash /root/scripts/miniconda-install.sh \
+&& . /root/miniconda3/bin/activate \
 # Prepare for frpc
 && tar -zxvf /root/scripts/frp_0.47.0_linux_amd64.tar.gz -C /root/\
-&& mv frpc.ini /root/frp_0.47.0_linux_amd64/frpc.ini \
+&& cp /root/scripts/frpc.ini /root/frp_0.47.0_linux_amd64/frpc.ini \
 # Prepare for boot-up init script
 && chmod 777 /root/scripts/startup.sh \
 # Modify welcome message
-&& mv welcome-message /etc/update-motd.d/10-help-text \
+&& cp /root/scripts/welcome-message /etc/update-motd.d/10-help-text \
 && rm -rf /etc/update-motd.d/60-unminimize
 
 # Prepare for Conda environment
@@ -29,4 +30,3 @@ RUN chmod 777 /root/scripts/conda-torch-gpu-setup.sh \
 && bash /root/scripts/conda-torch-gpu-setup.sh
 
 ENTRYPOINT /root/scripts/startup.sh
-

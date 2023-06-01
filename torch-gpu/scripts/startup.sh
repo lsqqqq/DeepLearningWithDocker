@@ -11,7 +11,7 @@ sed -i "s/SERVER_PORT/$SERVER_PORT/g" /root/frp_0.47.0_linux_amd64/frpc.ini
 service ssh start
 
 # Start frp service (uncomment to enable auto start on boot)
-if [ $ENABLE_FRP ]
+if [ $ENABLE_FRP == True ]
 then
     echo "Starting frp service"
     nohup /root/frp_0.47.0_linux_amd64/frpc -c /root/frp_0.47.0_linux_amd64/frpc.ini  > /root/nohup_frp.log 2>&1 &
