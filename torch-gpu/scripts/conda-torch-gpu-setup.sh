@@ -10,9 +10,13 @@ conda activate python39
 # Install pytorch-gpu
 conda install -y pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia
 
+# Install required packages
+pip install -r /root/scripts/requirements.txt
+pip install --no-index --find-links=/root/scripts//package  -r /root/scripts/requirements.txt
+
 # Test installation result
 cuda_enable=`python -c "import torch;print(torch.cuda.is_available())"`
-echo "Cuda available: $cuda_enable"
+echo "CUDA available: $cuda_enable"
 if [ $cuda_enable == True ]
 then
     echo "CUDA enabled"

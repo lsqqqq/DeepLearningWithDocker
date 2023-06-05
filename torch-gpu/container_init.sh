@@ -22,7 +22,7 @@ IMG_VERSION="1.0"
 
 ## Host settings
 # Root password in container
-ROOT_PASSWD="123456789"
+ROOT_PASSWD="ROOT_PASSWD"
 # Host port. You can visit the container via host_ip:HOST_PORT.
 HOST_PORT=6001
 # Server port
@@ -43,8 +43,8 @@ if [ $image_exists ]
 then
     echo "Image exist, skipped..."
 else
-    echo "Image does not exist, will create the image in 15 seconds..."
-	sleep 15
+    echo "Image does not exist, will start to create the image in 10 seconds..."
+	sleep 10
 	echo "Start building container from scratch..."
     docker build -t $IMAGE:$IMG_VERSION .
 fi

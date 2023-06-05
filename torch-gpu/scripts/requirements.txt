@@ -1,0 +1,14 @@
+eventlet
+matplotlib
+opencv-python
+pandas
+Pillow
+scikit-image
+scikit-learn
+scipy
+seaborn
+sentry-sdk
+urllib3
+tensorboard
+timm
+tqdm

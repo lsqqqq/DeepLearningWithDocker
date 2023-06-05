@@ -9,7 +9,7 @@ COPY scripts/* /root/scripts/
 # Prepare for basic environment
 RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 && apt-get update \
-&& apt-get install vim openssh-server iputils-ping wget curl -y \
+&& apt-get install vim openssh-server iputils-ping wget curl git -y \
 && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
 && echo "root:$ROOT_PASSWD" | chpasswd \
 # Prepare for MiniConda
