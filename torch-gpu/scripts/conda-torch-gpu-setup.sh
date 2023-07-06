@@ -14,6 +14,9 @@ conda install -y pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cu
 pip install -r /root/scripts/requirements.txt
 pip install --no-index --find-links=/root/scripts//package  -r /root/scripts/requirements.txt
 
+# Install ipkernels to enable jupyter notebook
+conda install -n python39 ipykernel --update-deps --force-reinstall
+
 # Test installation result
 cuda_enable=`python -c "import torch;print(torch.cuda.is_available())"`
 echo "CUDA available: $cuda_enable"

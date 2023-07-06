@@ -9,7 +9,7 @@ COPY scripts/* /root/scripts/
 # Prepare for basic environment
 RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 && apt-get update \
-&& apt-get install vim openssh-server iputils-ping wget curl git gcc -y \
+&& apt-get install vim openssh-server iputils-ping wget curl git htop tree gcc zip -y \
 && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
 && echo "root:$ROOT_PASSWD" | chpasswd \
 # Prepare for MiniConda
@@ -28,5 +28,8 @@ RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 # Prepare for Conda environment
 RUN chmod 777 /root/scripts/conda-torch-gpu-setup.sh \
 && bash /root/scripts/conda-torch-gpu-setup.sh
+
+# Finally, make sure the environment (nvcc, python, etc) can be visit using ssh
+RUN echo "export PATH=${PATH}" >> /root/.bashrc
 
 ENTRYPOINT /root/scripts/startup.sh

@@ -38,7 +38,7 @@ SERVER_PORT="SERVER_PORT"
 
 ### Container Initialization ###
 # Create image
-image_exists=`docker images | grep $IMAGE` | grep $IMG_VERSION
+image_exists=$(docker images -q $IMAGE:$IMG_VERSION 2> /dev/null)
 if [ $image_exists ]
 then
     echo "Image exist, skipped..."

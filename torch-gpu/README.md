@@ -49,4 +49,10 @@ Also, you need to prepare the directories on the host that will be mounted on th
 3. If success, run `docker ps`, you may find your container.
 
 
+## Some issues & solutions
+
+* [Cannot find environments such as nvcc or python](https://stackoverflow.com/questions/69788652/why-does-path-differ-when-i-connect-to-my-docker-container-with-ssh-or-with-exec)
+
+
+
 
