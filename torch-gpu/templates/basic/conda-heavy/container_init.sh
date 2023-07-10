@@ -16,9 +16,9 @@ CONTAINER_NAME='gpuclient1'
 
 ## Image settings
 # Container image name (without version)
-IMAGE="dl-basic"
+IMAGE="dl-heavy"
 # Container image version
-IMG_VERSION="1.0"
+IMG_VERSION="1.0-nvcc-conda"
 
 ## Host settings
 # Root password in container
@@ -37,8 +37,13 @@ SERVER_IP="SERVER_IP"
 SERVER_PORT="SERVER_PORT"
 
 ### Container Initialization ###
+
 # Create image
 image_exists=$(docker images -q $IMAGE:$IMG_VERSION 2> /dev/null)
+
+# Stop running if any error occured
+set -e
+
 if [ $image_exists ]
 then
     echo "Image exist, skipped..."
@@ -63,3 +68,5 @@ docker run -dit \
 	--restart=always \
 	$IMAGE:$IMG_VERSION \
 	/root/scripts/startup.sh
+
+set +e

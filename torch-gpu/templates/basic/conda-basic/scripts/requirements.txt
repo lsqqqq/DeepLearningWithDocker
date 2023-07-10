@@ -1,5 +1,6 @@
 eventlet
 matplotlib
+tensorboardx
 opencv-python
 pandas
 Pillow

@@ -4,18 +4,18 @@ conda activate base
 
 # Install conda
 conda info -e
-conda create -n python39 python=3.9 -y
-conda activate python39
+conda create -n python38 python=3.8 -y
+conda activate python38
 
 # Install pytorch-gpu
-conda install -y pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 
 # Install required packages
 pip install -r /root/scripts/requirements.txt
 pip install --no-index --find-links=/root/scripts//package  -r /root/scripts/requirements.txt
 
 # Install ipkernels to enable jupyter notebook
-conda install -n python39 ipykernel --update-deps --force-reinstall
+conda install -n python38 ipykernel --update-deps --force-reinstall
 
 # Test installation result
 cuda_enable=`python -c "import torch;print(torch.cuda.is_available())"`
@@ -27,3 +27,4 @@ else
     echo "Failed to enable CUDA, aborted"
     exit 1
 fi
+
