@@ -11,6 +11,9 @@
 ### Settings ###
 
 ## Container settings
+# Whether to create container
+CONTAINER_CREATE=False
+
 # Container name
 CONTAINER_NAME='gpuclient1'
 
@@ -54,18 +57,23 @@ else
 fi
 
 # Create the container
-docker run -dit \
-	-e ROOT_PASSWD=$ROOT_PASSWD \
-	-e SERVER_IP=$SERVER_IP \
-	-e SERVER_PORT=$SERVER_PORT \
-	-e ENABLE_FRP=$ENABLE_FRP \
-	-p $HOST_PORT:22 \
-	-v /data:/data \
-	-v /home/docker-private-dir/$CONTAINER_NAME:/home/workenv \
-	-h=$CONTAINER_NAME \
-	--name=$CONTAINER_NAME \
-	--restart=always \
-	$IMAGE:$IMG_VERSION \
-	/root/scripts/startup.sh
+if [ $CONTAINER_CREATE == True ]
+then
+	echo "Creating container $CONTAINER_NAME..."
+	docker run -dit \
+		-e ROOT_PASSWD=$ROOT_PASSWD \
+		-e SERVER_IP=$SERVER_IP \
+		-e SERVER_PORT=$SERVER_PORT \
+		-e ENABLE_FRP=$ENABLE_FRP \
+		-p $HOST_PORT:22 \
+		-v /data:/data \
+		-v /home/docker-private-dir/$CONTAINER_NAME:/home/workenv \
+		-h=$CONTAINER_NAME \
+		--name=$CONTAINER_NAME \
+		--restart=always \
+		--shm-size=16g \
+		$IMAGE:$IMG_VERSION \
+		/root/scripts/startup.sh
+fi
 
 set +e

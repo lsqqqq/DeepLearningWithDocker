@@ -28,8 +28,3 @@ else
     exit 1
 fi
 
-conda create -n python38 python=3.8 -y
-conda activate python38
-
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch -y
-
