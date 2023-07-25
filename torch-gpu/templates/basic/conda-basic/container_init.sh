@@ -13,7 +13,6 @@
 ## Container settings
 # Whether to create container
 CONTAINER_CREATE=False
-
 # Container name
 CONTAINER_NAME='gpuclient1'
 

@@ -11,7 +11,7 @@ RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 && apt-get update \
 && apt-get install -y dialog apt-utils \
 && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata \
-&& apt-get install vim openssh-server iputils-ping wget curl git htop tree gcc zip -y \
+&& apt-get install vim openssh-server iputils-ping wget curl git htop tree gcc zip unzip ffmpeg libsm6 libxext6  -y \
 && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
 && echo "root:$ROOT_PASSWD" | chpasswd \
 && ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa \
@@ -37,7 +37,7 @@ RUN echo "export LANG=C.UTF-8" >>/etc/profile \
 # RUN chmod 777 /root/scripts/conda-torch-gpu-setup-python39.sh \
 # && bash /root/scripts/conda-torch-gpu-setup-python39.sh
 
-# Make sure the environment is ok
+# Make sure the environment is the same when logged in as ssh
 RUN echo "export PATH=${PATH}" >> /root/.bashrc
 
 ENTRYPOINT /root/scripts/startup.sh

@@ -2,6 +2,11 @@
 
 ## Updates
 
+todo:
+* [ ] Simpler way to start
+* [ ] Remove frp from examples
+* [ ] Remove large conda files
+
 Jul 11: 
 * Fixed a bug that will make python38 environment miss some packages
 
@@ -52,10 +57,10 @@ A host machine with:
 * NVIDIA Docker environment (refer to [NVIDIA official site](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide))
 
 
-There are several folders under `templates/basic`, each folder is a workspace that containes the environment to build up a docker image. The structure of a single workspace is shown below:
+There are several folders under `templates/basic`, each folder is a workspace that contains the environment to build up a docker image. The structure of a single workspace is shown below:
 
 ```bash
-└── parent_folder
+└── workspace
     ├── Dockerfile	        # dockerfile with the instructions to build the container
     ├── container_init.sh   # script to build image & start container
     └── scripts		        # a folder contains all the scripts and packages that will be copied into the container
@@ -88,7 +93,7 @@ cd templates/basic/conda-basic/
 bash container_init.sh
 ```
 
-Second, Build heavy containerimage  with nvidia drive & nvcc & miniconda & python38 and python39 conda environments.  
+(Optional) Second, Build heavy container image with nvidia drive & nvcc & miniconda & python38 and python39 conda environments.  
 
 The image will be stored as `dl-heavy:1.0-nvcc-conda`.
 
