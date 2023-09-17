@@ -1,6 +1,0 @@
-#!/bin/sh
-
-printf "\n"
-printf "\e[1;32mWelcome to Deep Learning Dev Environment\n\e[0m"
-printf " * Workspace is located at /home/workenv, will keep after container destroyed.\n"
-printf " * Data is located at /data, will keep after container destroyed.\n"
