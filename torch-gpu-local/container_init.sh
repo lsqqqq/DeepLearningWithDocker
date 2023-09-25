@@ -241,7 +241,7 @@ then
 			--name=$CONTAINER_NAME \
 			--restart=always \
 			--gpus all \
-			--shm-size=16g \
+			--shm-size=32g \
 			$SAVE_IMAGE \
 			/root/scripts/startup.sh
 
